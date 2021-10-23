@@ -55,7 +55,7 @@ class JsonToAvroSchemaConverterTest {
 
     @Override
     public Stream<? extends Arguments> provideArguments(final ExtensionContext context) throws Exception {
-      final JsonNode testCases = Jsons.deserialize(MoreResources.readResource("parquet/json_schema_converter/get_field_type.json"));
+      final JsonNode testCases = Jsons.deserialize(MoreResources.readResource("parquet/json_schema_converter/field_conversion_test_cases.json"));
       return MoreIterators.toList(testCases.elements()).stream().map(testCase -> Arguments.of(
           testCase.get("fieldName").asText(),
           testCase.get("jsonFieldSchema"),
@@ -78,7 +78,7 @@ class JsonToAvroSchemaConverterTest {
 
     @Override
     public Stream<? extends Arguments> provideArguments(final ExtensionContext context) throws Exception {
-      final JsonNode testCases = Jsons.deserialize(MoreResources.readResource("parquet/json_schema_converter/get_avro_schema.json"));
+      final JsonNode testCases = Jsons.deserialize(MoreResources.readResource("parquet/json_schema_converter/schema_conversion_test_cases.json"));
       return MoreIterators.toList(testCases.elements()).stream().map(testCase -> Arguments.of(
           testCase.get("schemaName").asText(),
           testCase.get("namespace").asText(),
